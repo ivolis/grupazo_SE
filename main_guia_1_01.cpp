@@ -10,11 +10,11 @@ int main()
     gasDetector.mode(PullDown);
 
     alarmLed = OFF;
-    int n = 0;
+    int n = 0; // inicializo el contador de iteraciones
 
     while (true) {
-        n++;
-        printf("Iteracion numero %d \n", n);
+        n++; // aumento en 1 el contador de iteraciones
+        printf("Iteracion numero %d \n", n); // imprimo por consola un mensaje
         if ( gasDetector == ON ) {
             alarmLed = ON;
         }
