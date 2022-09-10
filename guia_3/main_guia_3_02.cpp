@@ -113,12 +113,13 @@ void alarmActivationUpdate()
         alarmState = ON;
     }
     if( alarmState ) { 
-        accumulatedTimeAlarm = accumulatedTimeAlarm + TIME_INCREMENT_MS;                      
+        accumulatedTimeAlarm = accumulatedTimeAlarm + TIME_INCREMENT_MS; 
+        printf("Tiempo acumulado de la alarma: %d", accumulatedTimeAlarm); // IMPRIMO EL TIEMPO QUE VA ACUMULANDO PARA HACER EL "TIMBREO"
     
         if( gasDetectorState && overTempDetectorState ) {
             if( accumulatedTimeAlarm >= BLINKING_TIME_GAS_AND_OVER_TEMP_ALARM ) {
                 accumulatedTimeAlarm = 0;
-                alarmLed = !alarmLed;
+                alarmLed = !alarmLed; // DE ESTA MANERA SE HACE EL "BLINKING" de apagado-prendido en intervalos
             }
         } else if( gasDetectorState ) {
             if( accumulatedTimeAlarm >= BLINKING_TIME_GAS_ALARM ) {
