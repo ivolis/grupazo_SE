@@ -229,11 +229,13 @@ void uartTask()
             }
 
             if ( incorrectCode == false ) {
+                printf("El codigo ingresado es correcto\n"); // IMPRIMO MENSAJE DE CODIGO INGRESADO CORRECTO
                 uartUsb.write( "\r\nThe code is correct\r\n\r\n", 25 );
                 alarmState = OFF;
                 incorrectCodeLed = OFF;
                 numberOfIncorrectCodes = 0;
             } else {
+                printf("El codigo ingresado es incorrecto\n"); // IMPRIMO MENSAJE DE CODIGO INGRESADO INCORRECTO
                 uartUsb.write( "\r\nThe code is incorrect\r\n\r\n", 27 );
                 incorrectCodeLed = ON;
                 numberOfIncorrectCodes++;
