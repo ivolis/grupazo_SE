@@ -96,7 +96,7 @@ void alarmActivationUpdate()
 {
     potentiometerReadingScaled = 
           analogReadingScaledWithTheLM35Formula (potentiometer.read() );
-    printf("Temperatura (Celsius): %d", potentiometerReadingScaled); // IMPRIMO LO LEIDO Y ESCALADO POR LA ENTRADA ANALOGICA
+    printf("Temperatura (Celsius): %d", potentiometerReadingScaled); // IMPRIMO LO LEIDO Y ESCALADO POR LA ENTRADA ANALOGICA A TRAVES DE LA TERMINAL
 
     if ( potentiometerReadingScaled > POTENTIOMETER_OVER_TEMP_LEVEL ) {
         overTempDetector = ON;
@@ -114,7 +114,7 @@ void alarmActivationUpdate()
     }
     if( alarmState ) { 
         accumulatedTimeAlarm = accumulatedTimeAlarm + TIME_INCREMENT_MS; 
-        printf("Tiempo acumulado de la alarma: %d", accumulatedTimeAlarm); // IMPRIMO EL TIEMPO QUE VA ACUMULANDO PARA HACER EL "TIMBREO"
+        printf("Tiempo acumulado de la alarma: %d", accumulatedTimeAlarm); // IMPRIMO EL TIEMPO QUE VA ACUMULANDO PARA HACER EL "TIMBREO" A TRAVES DE LA TERMINAL
     
         if( gasDetectorState && overTempDetectorState ) {
             if( accumulatedTimeAlarm >= BLINKING_TIME_GAS_AND_OVER_TEMP_ALARM ) {
@@ -229,13 +229,13 @@ void uartTask()
             }
 
             if ( incorrectCode == false ) {
-                printf("El codigo ingresado es correcto\n"); // IMPRIMO MENSAJE DE CODIGO INGRESADO CORRECTO
+                printf("El codigo ingresado es correcto\n"); // IMPRIMO MENSAJE DE CODIGO INGRESADO CORRECTO A TRAVES DE LA TERMINAL
                 uartUsb.write( "\r\nThe code is correct\r\n\r\n", 25 );
                 alarmState = OFF;
                 incorrectCodeLed = OFF;
                 numberOfIncorrectCodes = 0;
             } else {
-                printf("El codigo ingresado es incorrecto\n"); // IMPRIMO MENSAJE DE CODIGO INGRESADO INCORRECTO
+                printf("El codigo ingresado es incorrecto\n"); // IMPRIMO MENSAJE DE CODIGO INGRESADO INCORRECTO A TRAVES DE LA TERMINAL
                 uartUsb.write( "\r\nThe code is incorrect\r\n\r\n", 27 );
                 incorrectCodeLed = ON;
                 numberOfIncorrectCodes++;
