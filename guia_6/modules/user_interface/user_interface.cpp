@@ -80,6 +80,14 @@ void userInterfaceUpdate()
     incorrectCodeIndicatorUpdate();
     systemBlockedIndicatorUpdate();
     userInterfaceDisplayUpdate();
+
+    displayCharPositionWrite ( 0,0 );
+// displayStringWrite( matrixKeypadScan() );
+    std::string str(1, matrixKeypadUpdate());
+    if(str[0] != '\0') {
+        displayStringWrite(str.data());
+        printf("Hi panchos!! %s \n", str.data());
+    }
 }
 
 bool incorrectCodeStateRead()
